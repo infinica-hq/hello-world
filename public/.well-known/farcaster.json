@@ -1,1 +1,27 @@
-{}
+{
+  "accountAssociation": {
+    "header": "...",
+    "payload": "...",
+    "signature": "..."
+  },
+  "frame": {
+    "name": "SMWA",
+    "version": "1",
+    "iconUrl": "https://miladtsx.github.io/fc-hello-world/splash.png",
+    "homeUrl": "https://miladtsx.github.io/fc-hello-world",
+    "imageUrl": "https://miladtsx.github.io/fc-hello-world//splash.png",
+    "buttonTitle": "See your address",
+    "splashImageUrl": "https://miladtsx.github.io/fc-hello-world//splash.png",
+    "splashBackgroundColor": "#6200EA",
+    "subtitle": "See your wallet address",
+    "description": "See your wallet address and sign a message to prove ownership of your account.",
+    "primaryCategory": "entertainment",
+    "heroImageUrl": "https://miladtsx.github.io/fc-hello-world//splash.png",
+    "tags": ["test", "developer", "hello-world", "onboarding", "miniapp"],
+    "tagline": "Hello World",
+    "ogTitle": "TEST - Sign text",
+    "ogDescription": "See your wallet address and sign a message to prove ownership.",
+    "ogImageUrl": "https://miladtsx.github.io/fc-hello-world//splash.png",
+    "castShareUrl": "https://miladtsx.github.io/fc-hello-world/compose?text=hello+world"
+  }
+}
