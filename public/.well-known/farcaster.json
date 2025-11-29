@@ -7,21 +7,21 @@
   "frame": {
     "name": "SMWA",
     "version": "1",
-    "iconUrl": "https://miladtsx.github.io/fc-hello-world/splash.png",
-    "homeUrl": "https://miladtsx.github.io/fc-hello-world",
-    "imageUrl": "https://miladtsx.github.io/fc-hello-world//splash.png",
+    "iconUrl": "https://hello.infinica.xyz/splash.png",
+    "homeUrl": "https://hello.infinica.xyz/",
+    "imageUrl": "https://hello.infinica.xyz/splash.png",
     "buttonTitle": "See your address",
-    "splashImageUrl": "https://miladtsx.github.io/fc-hello-world//splash.png",
+    "splashImageUrl": "https://hello.infinica.xyz/splash.png",
     "splashBackgroundColor": "#6200EA",
     "subtitle": "See your wallet address",
     "description": "See your wallet address and sign a message to prove ownership of your account.",
     "primaryCategory": "entertainment",
-    "heroImageUrl": "https://miladtsx.github.io/fc-hello-world//splash.png",
+    "heroImageUrl": "https://hello.infinica.xyz/splash.png",
     "tags": ["test", "developer", "hello-world", "onboarding", "miniapp"],
     "tagline": "Hello World",
     "ogTitle": "TEST - Sign text",
     "ogDescription": "See your wallet address and sign a message to prove ownership.",
-    "ogImageUrl": "https://miladtsx.github.io/fc-hello-world//splash.png",
-    "castShareUrl": "https://miladtsx.github.io/fc-hello-world/compose?text=hello+world"
+    "ogImageUrl": "https://hello.infinica.xyz/splash.png",
+    "castShareUrl": "https://hello.infinica.xyz/compose?text=hello+world"
   }
 }
