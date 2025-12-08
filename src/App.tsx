@@ -6,7 +6,7 @@ function App() {
   useEffect(() => {
     const id = setTimeout(() => {
       sdk.actions.ready();
-    }, 3 * 1000);
+    }, 1 * 1000);
 
     return () => clearTimeout(id);
   }, []);
