@@ -1,6 +1,6 @@
 import { sdk } from "@farcaster/miniapp-sdk";
 import { useEffect } from "react";
-import { useAccount, useConnect, useSignMessage } from "wagmi";
+import { useConnection, useConnect, useConnectors, useSignMessage } from "wagmi";
 
 function App() {
   useEffect(() => {
@@ -20,8 +20,9 @@ function App() {
 }
 
 function ConnectMenu() {
-  const { isConnected, address } = useAccount();
-  const { connect, connectors } = useConnect();
+  const { isConnected, address, } = useConnection();
+  const { connect } = useConnect();
+  const connectors = useConnectors();
 
   if (isConnected) {
     return (
