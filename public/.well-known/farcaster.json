@@ -1,6 +1,6 @@
 {
   "frame": {
-    "version": "1.0",
+    "version": "1",
     "name": "Proof Stamp",
     "homeUrl": "https://stamp.infinica.xyz/",
     "subtitle": "Turn statements into evidence",
@@ -21,5 +21,10 @@
     "ogTitle": "Verify what you own",
     "ogDescription": "Create verifiable proof for important claims. Link your identity to what you truly own in seconds.",
     "ogImageUrl": "https://stamp.infinica.xyz/icon.png"
+  },
+  "accountAssociation": {
+    "header": "eyJmaWQiOjE0OTY1NTcsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhGMmFFZEE1ODM3ZDY1ZjA2NjhFMGY4YjJDRDUwOGEwNzlGZWUwNDAzIn0",
+    "payload": "eyJkb21haW4iOiJzdGFtcC5pbmZpbmljYS54eXoifQ",
+    "signature": "b0Gk5PavSZHackFzvdDKeeKUFnLUyZBVgJ39b5eJlZV7VZZjn1lnrp21NdtTgH2gfkuLnTvJIPwhZqGtl383Vhw="
   }
 }
