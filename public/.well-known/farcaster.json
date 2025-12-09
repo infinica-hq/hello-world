@@ -21,10 +21,5 @@
     "ogTitle": "Verify what you own",
     "ogDescription": "Create verifiable proof for important claims. Link your identity to what you truly own in seconds.",
     "ogImageUrl": "https://stamp.infinica.xyz/icon.png"
-  },
-  "accountAssociation": {
-    "header": "eyJmaWQiOjE0OTY1NTcsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhGMmFFZEE1ODM3ZDY1ZjA2NjhFMGY4YjJDRDUwOGEwNzlGZWUwNDAzIn0",
-    "payload": "eyJkb21haW4iOiJoZWxsby5pbmZpbmljYS54eXoifQ",
-    "signature": "+NegVTFh945B1matNAATDcwrhC8tkKwX8Hsc0XaMafYEu33vXu+Tx86Ui0lIaD8R/GQUMS6GBkRkAPkA/oMs+hs="
   }
 }
