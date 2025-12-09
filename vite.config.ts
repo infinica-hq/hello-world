@@ -38,7 +38,7 @@ const proofPathPlugin = (): PluginOption => {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === "production" ? "/hello-world/" : "/",
+  base: "/",
   plugins: [proofPathPlugin(), react()],
   appType: "mpa",
   build: {
