@@ -6,46 +6,16 @@ import { defineConfig } from "vite";
 
 const rootDir = fileURLToPath(new URL(".", import.meta.url));
 
-/**
- * For DEV environment
- * @returns
- */
-const proofPathPlugin = (): PluginOption => {
-  const handler: Connect.NextHandleFunction = (req, _res, next) => {
-    if (!req.url) {
-      next();
-      return;
-    }
-
-    const [path, search] = req.url.split("?");
-    if (path === "/proof" || path === "/proof/") {
-      req.url = `/shareable/proof${search ? `?${search}` : ""}`;
-    }
-
-    next();
-  };
-
-  return {
-    name: "proof-path-rewrite",
-    configureServer(server) {
-      server.middlewares.use(handler);
-    },
-    configurePreviewServer(server) {
-      server.middlewares.use(handler);
-    },
-  };
-};
-
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   base: "/",
-  plugins: [proofPathPlugin(), react()],
+  plugins: [react()],
   appType: "mpa",
   build: {
     rollupOptions: {
       input: {
         main: resolve(rootDir, "index.html"),
-        proof: resolve(rootDir, "shareable/proof.html"),
+        proof: resolve(rootDir, "proof.html"),
       },
     },
   },
