@@ -19,10 +19,10 @@ function App() {
         </Link>
 
         <nav className="app-nav">
-          <NavLink className={({ isActive }) => `app-tab ${isActive ?? "app-tab--active"}`} end to="/">
+          <NavLink className={({ isActive }) => `app-tab ${isActive ? "app-tab--active" : ""}`} to="/">
             Sign
           </NavLink>
-          <NavLink className={({ isActive }) => `app-tab ${isActive ?? "app-tab--active"}`} to="/proof">
+          <NavLink className={({ isActive }) => `app-tab ${isActive ? "app-tab--active" : ""}`} to="/proof">
             Share
           </NavLink>
 
