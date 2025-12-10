@@ -116,7 +116,7 @@ Verification link: ${shareUrl}`;
       try {
         const result = await sdk.actions.composeCast({
           text: shareText,
-          embeds: [shareUrl],
+          // embeds: [shareUrl],
         });
         showToast(result?.cast ? "Cast shared on Farcaster" : "Cast composer opened");
         return;
