@@ -102,9 +102,8 @@ export function Verify({ summary = false }) {
     };
     url.searchParams.set("data", await encodeSharedProof(payload));
     const shareUrl = url.toString();
-    const shareText = `Here is my verifiable claim:
-${proof.message}
-
+    const shareText = `${proof.message}
+    
 Verification link: ${shareUrl}`;
     const title = "Proof Stamp";
 
