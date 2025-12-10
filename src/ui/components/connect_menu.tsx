@@ -8,11 +8,7 @@ export function ConnectMenu() {
   const { isConnected, address } = useConnection();
   const { connect, isPending, error, status } = useConnect();
   const connectors = useConnectors();
-  const availableConnectors = useMemo(
-    () => connectors.filter((connector) => connector.ready),
-    [connectors],
-  );
-  const hasWalletProvider = availableConnectors.length > 0;
+  const hasWalletProvider = connectors.length > 0;
   const [selectedConnectorId, setSelectedConnectorId] = useState<string | null>(null);
   const { proof, setProof } = useSignedProof();
   const [showAddressTooltip, setShowAddressTooltip] = useState(false);
@@ -28,12 +24,12 @@ export function ConnectMenu() {
 
   useEffect(() => {
     if (selectedConnectorId === null && hasWalletProvider) {
-      setSelectedConnectorId(availableConnectors[0]?.uid ?? availableConnectors[0]?.id ?? null);
+      setSelectedConnectorId(connectors[0]?.uid ?? connectors[0]?.id ?? null);
     }
     if (!hasWalletProvider) {
       setSelectedConnectorId(null);
     }
-  }, [availableConnectors, selectedConnectorId, hasWalletProvider]);
+  }, [connectors, selectedConnectorId, hasWalletProvider]);
 
   useEffect(() => {
     setShowAddressTooltip(false);
@@ -45,11 +41,11 @@ export function ConnectMenu() {
     }
 
     return (
-      availableConnectors.find(
+      connectors.find(
         (connector) => connector.uid === selectedConnectorId || connector.id === selectedConnectorId,
       ) ?? null
     );
-  }, [availableConnectors, selectedConnectorId]);
+  }, [connectors, selectedConnectorId]);
 
   const handleConnect = () => {
     if (selectedConnector) {
@@ -81,25 +77,24 @@ export function ConnectMenu() {
     return (
       <div className="connect-wallet-panel">
         <h3>Connect wallet</h3>
-        {hasWalletProvider && (
-          <label className="connector-select">
-            Choose wallet
-            <select
-              disabled={!hasWalletProvider || isPending}
-              onChange={(event) => setSelectedConnectorId(event.target.value)}
-              value={selectedConnectorId ?? ""}
-            >
-              {availableConnectors.map((connector) => {
-                const optionValue = connector.uid ?? connector.id;
-                return (
-                  <option key={optionValue} value={optionValue}>
-                    {connector.name}
-                  </option>
-                );
-              })}
-            </select>
-          </label>
-        )}
+
+        <label className="connector-select">
+          Choose wallet
+          <select
+            disabled={!hasWalletProvider || isPending}
+            onChange={(event) => setSelectedConnectorId(event.target.value)}
+            value={selectedConnectorId ?? ""}
+          >
+            {connectors.map((connector) => {
+              const optionValue = connector.uid ?? connector.id;
+              return (
+                <option key={optionValue} value={optionValue}>
+                  {connector.name}
+                </option>
+              );
+            })}
+          </select>
+        </label>
 
         {!hasWalletProvider && (
           <p className="connector-error">
@@ -116,10 +111,14 @@ export function ConnectMenu() {
         </button>
 
         <div className="align-center">
-          <p className="connector-status">Connection: {status}</p>
-          {(error?.message?.includes("undefined") && <p className="connector-error">❌ No Wallet?</p>) ||
-            (error?.message?.includes("rejected") && <p className="connector-error">❌ Why Rejected?</p>) ||
-            (error && <p className="connector-error">❌ {error?.message}</p>)}
+          <p className="connector-status">{`Connection: ${status}`}
+            {(error?.message?.includes("undefined") && <p className="connector-error">Wallet not found!{" "}
+              <a href="https://www.coinbase.com/en-de/learn/tips-and-tutorials/how-to-set-up-a-crypto-wallet" target="_blank" rel="noreferrer">
+                ?
+              </a></p>) ||
+              (error?.message?.includes("rejected") && <p className="connector-error">❌ Why Rejected?</p>) ||
+              (error && <p className="connector-error">❌ {error?.message}</p>)}
+          </p>
         </div>
       </div>
     );
