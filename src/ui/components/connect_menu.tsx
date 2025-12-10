@@ -8,10 +8,15 @@ export function ConnectMenu() {
   const { isConnected, address } = useConnection();
   const { connect, isPending, error, status } = useConnect();
   const connectors = useConnectors();
+  const availableConnectors = useMemo(
+    () => connectors.filter((connector) => connector.ready),
+    [connectors],
+  );
+  const hasWalletProvider = availableConnectors.length > 0;
   const [selectedConnectorId, setSelectedConnectorId] = useState<string | null>(null);
   const { proof, setProof } = useSignedProof();
   const [showAddressTooltip, setShowAddressTooltip] = useState(false);
-  const defaultMessage = "I control this wallet and my Farcaster account.";
+  const defaultMessage = "I control this wallet and here is my statement ...";
   const [message, setMessage] = useState(() => proof?.message ?? defaultMessage);
   const [hasTyped, setHasTyped] = useState(false);
 
@@ -22,10 +27,13 @@ export function ConnectMenu() {
   }, [proof, hasTyped]);
 
   useEffect(() => {
-    if (selectedConnectorId === null && connectors.length > 0) {
-      setSelectedConnectorId(connectors[0]?.uid ?? connectors[0]?.id ?? null);
+    if (selectedConnectorId === null && hasWalletProvider) {
+      setSelectedConnectorId(availableConnectors[0]?.uid ?? availableConnectors[0]?.id ?? null);
     }
-  }, [connectors, selectedConnectorId]);
+    if (!hasWalletProvider) {
+      setSelectedConnectorId(null);
+    }
+  }, [availableConnectors, selectedConnectorId, hasWalletProvider]);
 
   useEffect(() => {
     setShowAddressTooltip(false);
@@ -37,10 +45,11 @@ export function ConnectMenu() {
     }
 
     return (
-      connectors.find((connector) => connector.uid === selectedConnectorId || connector.id === selectedConnectorId) ??
-      null
+      availableConnectors.find(
+        (connector) => connector.uid === selectedConnectorId || connector.id === selectedConnectorId,
+      ) ?? null
     );
-  }, [connectors, selectedConnectorId]);
+  }, [availableConnectors, selectedConnectorId]);
 
   const handleConnect = () => {
     if (selectedConnector) {
@@ -72,23 +81,35 @@ export function ConnectMenu() {
     return (
       <div className="connect-wallet-panel">
         <h3>Connect wallet</h3>
-        <label className="connector-select">
-          Choose wallet
-          <select
-            disabled={!connectors.length || isPending}
-            onChange={(event) => setSelectedConnectorId(event.target.value)}
-            value={selectedConnectorId ?? ""}
-          >
-            {connectors.map((connector) => {
-              const optionValue = connector.uid ?? connector.id;
-              return (
-                <option key={optionValue} value={optionValue}>
-                  {connector.name}
-                </option>
-              );
-            })}
-          </select>
-        </label>
+        {hasWalletProvider && (
+          <label className="connector-select">
+            Choose wallet
+            <select
+              disabled={!hasWalletProvider || isPending}
+              onChange={(event) => setSelectedConnectorId(event.target.value)}
+              value={selectedConnectorId ?? ""}
+            >
+              {availableConnectors.map((connector) => {
+                const optionValue = connector.uid ?? connector.id;
+                return (
+                  <option key={optionValue} value={optionValue}>
+                    {connector.name}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
+        )}
+
+        {!hasWalletProvider && (
+          <p className="connector-error">
+            Wallet is required.{" "}
+            <a href="https://www.coinbase.com/en-de/learn/tips-and-tutorials/how-to-set-up-a-crypto-wallet" target="_blank" rel="noreferrer">
+              Pick one
+            </a>
+            .
+          </p>
+        )}
 
         <button disabled={!selectedConnector || isPending} onClick={handleConnect} type="button">
           {isPending ? "Connecting…" : "Connect"}
