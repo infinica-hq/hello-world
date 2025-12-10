@@ -102,8 +102,7 @@ export function Proof({ summary = false }) {
     };
     url.searchParams.set("data", await encodeSharedProof(payload));
     const shareUrl = url.toString();
-    const shareText = `${proof.message}
-Proof link: ${shareUrl}`;
+    const shareText = `${proof.message}`;
     const title = "Proof Stamp";
 
     const showToast = (message: string) => {
