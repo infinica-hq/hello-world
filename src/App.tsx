@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link, NavLink, Route, Routes, useLocation } from "react-router-dom";
 import { init } from "./hooks/useMiniApp";
 import { Home } from "./ui/home";
-import { Proof } from "./ui/proof";
+import { Verify } from "./ui/proof";
 
 function App() {
   const location = useLocation();
@@ -22,7 +22,7 @@ function App() {
           <NavLink className={({ isActive }) => `app-tab ${isActive ? "app-tab--active" : ""}`} to="/">
             Sign
           </NavLink>
-          <NavLink className={({ isActive }) => `app-tab ${isActive ? "app-tab--active" : ""}`} to="/proof">
+          <NavLink className={({ isActive }) => `app-tab ${isActive ? "app-tab--active" : ""}`} to="/verify">
             Share
           </NavLink>
 
@@ -34,7 +34,7 @@ function App() {
         <div className="page-transition" key={location.pathname}>
           <Routes location={location}>
             <Route element={<Home />} path="/" />
-            <Route element={<Proof />} path="/proof" />
+            <Route element={<Verify />} path="/verify" />
           </Routes>
         </div>
       </main>

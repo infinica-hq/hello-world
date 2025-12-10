@@ -41,9 +41,8 @@ export function ConnectMenu() {
     }
 
     return (
-      connectors.find(
-        (connector) => connector.uid === selectedConnectorId || connector.id === selectedConnectorId,
-      ) ?? null
+      connectors.find((connector) => connector.uid === selectedConnectorId || connector.id === selectedConnectorId) ??
+      null
     );
   }, [connectors, selectedConnectorId]);
 
@@ -99,7 +98,11 @@ export function ConnectMenu() {
         {!hasWalletProvider && (
           <p className="connector-error">
             Wallet is required.{" "}
-            <a href="https://www.coinbase.com/en-de/learn/tips-and-tutorials/how-to-set-up-a-crypto-wallet" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.coinbase.com/en-de/learn/tips-and-tutorials/how-to-set-up-a-crypto-wallet"
+              rel="noreferrer"
+              target="_blank"
+            >
               Pick one
             </a>
             .
@@ -111,11 +114,20 @@ export function ConnectMenu() {
         </button>
 
         <div className="align-center">
-          <p className="connector-status">{`Connection: ${status}`}
-            {(error?.message?.includes("undefined") && <p className="connector-error">Wallet not found!{" "}
-              <a href="https://www.coinbase.com/en-de/learn/tips-and-tutorials/how-to-set-up-a-crypto-wallet" target="_blank" rel="noreferrer">
-                ?
-              </a></p>) ||
+          <p className="connector-status">
+            {`Connection: ${status}`}
+            {(error?.message?.includes("undefined") && (
+              <p className="connector-error">
+                Wallet not found!{" "}
+                <a
+                  href="https://www.coinbase.com/en-de/learn/tips-and-tutorials/how-to-set-up-a-crypto-wallet"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  ?
+                </a>
+              </p>
+            )) ||
               (error?.message?.includes("rejected") && <p className="connector-error">❌ Why Rejected?</p>) ||
               (error && <p className="connector-error">❌ {error?.message}</p>)}
           </p>

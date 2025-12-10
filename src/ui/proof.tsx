@@ -8,7 +8,7 @@ import { isMiniApp } from "../hooks/useMiniApp";
 import { useEphemeralFlag } from "../hooks/useUtils";
 import { useSignedProof } from "../state/signedProof";
 
-export function Proof({ summary = false }) {
+export function Verify({ summary = false }) {
   const { proof, setProof } = useSignedProof();
   const { value: showShareToast, trigger: triggerShareToast } = useEphemeralFlag(2000);
   const [shareToastMessage, setShareToastMessage] = useState<string | null>(null);
@@ -102,7 +102,10 @@ export function Proof({ summary = false }) {
     };
     url.searchParams.set("data", await encodeSharedProof(payload));
     const shareUrl = url.toString();
-    const shareText = `${proof.message}`;
+    const shareText = `Here is my verifiable claim:
+${proof.message}
+
+Verification link: ${shareUrl}`;
     const title = "Proof Stamp";
 
     const showToast = (message: string) => {
@@ -164,7 +167,6 @@ export function Proof({ summary = false }) {
               <h2>Publish your proof</h2>
             </span>
             <p>Share a link anyone can verify.</p>
-            <div className="share-pill">Verifiable link</div>
           </div>
 
           <div className="proof-card proof-card--share">

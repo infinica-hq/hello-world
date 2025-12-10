@@ -37,7 +37,7 @@ export function SignButton({
         const payload = typeof variables?.message === "string" ? variables.message : actualMessage;
         setLastPayload(payload);
         onSigned?.(signature, payload);
-        navigate("/proof", { replace: true });
+        navigate("/verify", { replace: true });
       },
     },
   });

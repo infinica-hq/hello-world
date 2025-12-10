@@ -415,18 +415,6 @@ button:not(:disabled):active {
   gap: 1.25rem;
 }
 
-.share-pill {
-  background: rgba(14, 159, 255, 0.1);
-  color: var(--text-primary);
-  border: 1px solid rgba(14, 159, 255, 0.35);
-  padding: 0.4rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  max-width: 150px;
-}
-
 .proof-card--share {
   text-align: left;
   display: flex;
@@ -590,7 +578,7 @@ button:not(:disabled):active {
   color: var(--text-primary);
   word-break: break-all;
   overflow-wrap: anywhere;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.4;
 }
 

@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       input: {
         main: resolve(rootDir, "index.html"),
-        proof: resolve(rootDir, "proof.html"),
+        verify: resolve(rootDir, "verify.html"),
       },
     },
   },
