@@ -5,7 +5,7 @@ export async function init() {
     if (await isMiniApp()) {
       await sdk.actions.ready();
     } else {
-      alert("Not a miniapp!");
+      console.debug("Not a miniapp!");
     }
   } catch (error) {
     console.error("MiniApp ready() failed", error);
